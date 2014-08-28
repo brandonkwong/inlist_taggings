@@ -18,8 +18,9 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     @same = Tag.same_tag(tag_params["name"])
 
-    # logger.debug '\n\n\n\n\n\HELLO'
+    # logger.debug "\n\n\nDEBUG START \n"
     # logger.debug @same
+    # logger.debug "\nDEBUG END \n\n\n"
 
     # If a Tag already exists then add it to the Item,
     # else create a new Tag and add it to the Item
