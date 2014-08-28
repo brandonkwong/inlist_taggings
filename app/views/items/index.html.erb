@@ -1,0 +1,50 @@
+<h1>InList</h1>
+
+<h2>Add Item</h2>
+
+<!-- Item Form -->
+<%= form_for @item do |f| %>
+  <%= f.text_field :name, placeholder: 'item' %>
+
+
+
+  <%= f.submit %>
+<% end %>
+
+<br>
+
+<!-- Tag Form -->
+<%= form_for @tag do |f| %>
+  <%= f.text_field :name, placeholder: 'tag' %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<br><hr>
+
+<!-- Item List -->
+<h3>Items</h3>
+<ul>
+<% @items.each do |i| %>
+
+  <li>
+    <%= i.name %> &nbsp;[ <%= link_to 'x', i, method: :delete %> ]
+      <br>
+    <% i.tags.each do |t| %>
+      <%= t.name %>
+    <% end %>
+  </li>
+
+<% end %>
+</ul>
+
+<br><hr>
+
+<!-- Tag List -->
+<h3>Tags</h3>
+<ul>
+<% @tags.each do |t| %>
+  <li><%= t.name %> &nbsp;[ <%= link_to 'x', t, method: :delete %> ]</li>
+<% end %>
+</ul>
