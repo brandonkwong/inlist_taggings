@@ -6,19 +6,18 @@
 <%= form_for @item do |f| %>
   <%= f.text_field :name, placeholder: 'item' %>
 
+  <%= form_for @tag do |t| %>
+    <% t.text_field :name, placeholder: 'tag' %>
+
 
 
   <%= f.submit %>
+  <% end %>
 <% end %>
 
 <br>
 
-<!-- Tag Form -->
-<%= form_for @tag do |f| %>
-  <%= f.text_field :name, placeholder: 'tag' %>
 
-  <%= f.submit %>
-<% end %>
 
 
 <br><hr>
