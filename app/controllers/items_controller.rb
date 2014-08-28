@@ -5,20 +5,22 @@ class ItemsController < ApplicationController
     @item = Item.new
 
     @tags = Tag.all
-    @tag = @item.tags.new
+    @tag = Tag.new
+
+    # Test Query
+    @tagging = Tagging.where(tag_id: 33)
   end
+
 
 
 
   def create
     @item = Item.new(item_params)
+    @tag = @item.tags.new(tag_params)
     if @item.save
       redirect_to root_path
     end
   end
-
-
-
 
 
 
@@ -28,10 +30,15 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+
   private
 
   def item_params
     params.require(:item).permit(:name)
+  end
+
+  def tag_params
+    params.require(:tag).permit(:name)
   end
 
 end

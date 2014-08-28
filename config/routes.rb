@@ -2,7 +2,6 @@ InlistTaggings::Application.routes.draw do
 
   resources :items
   resources :tags
-  resources :taggings
 
   root 'items#index'
 
