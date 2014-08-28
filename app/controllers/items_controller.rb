@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @tag = Tag.new
 
     # Test Query
-    @tagging = Tagging.where(tag_id: 33)
+    @tagging = Tagging.where(tag_id: 50)
   end
 
 
@@ -16,18 +16,25 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @same = Tag.same_tag(tag_params["name"])
 
-    # Test if tag being passed exists
-    if Tag.exists?
-      # Test if existing tag is assigned
-      @item.tags = Tag.find(params[:id])
+    # logger.debug '\n\n\n\n\n\HELLO'
+    # logger.debug @same
+
+    # If a Tag already exists then add it to the Item,
+    # else create a new Tag and add it to the Item
+
+    # Note: test tag_params is empty
+
+    if @same.exists?
+      @item.tags << @same
     else
-      @tag = @item.tags.new(tag_params)
+      @item.tags.new(tag_params)
     end
-    
-
 
     if @item.save
+      redirect_to root_path
+    else
       redirect_to root_path
     end
   end
