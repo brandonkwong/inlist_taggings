@@ -16,7 +16,17 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @tag = @item.tags.new(tag_params)
+
+    # Test if tag being passed exists
+    if Tag.exists?
+      # Test if existing tag is assigned
+      @item.tags = Tag.find(params[:id])
+    else
+      @tag = @item.tags.new(tag_params)
+    end
+    
+
+
     if @item.save
       redirect_to root_path
     end
