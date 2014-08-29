@@ -25,9 +25,9 @@
             <li>
                 <%= i.name %> &nbsp;[ <%= link_to 'x', i, method: :delete %> ]
                 <br>
-                [ <% i.tags.each do |t| %>
-                    <%= t.name %>
-                <% end %> ]
+                [<% i.tags.each do |t| %>
+                    &nbsp;#<%= t.name %>&nbsp;
+                <% end %>]
             </li>
             <br>
             <% end %>
@@ -39,7 +39,7 @@
         <h3>Tags</h3>
         <ul>
             <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
-            <li><%= t.name %> &nbsp;[ <%= link_to 'x', t, method: :delete %> ]</li>
+            <li>#<%= t.name %> &nbsp;[ <%= link_to 'x', t, method: :delete %> ]</li>
             <br>
             <% end %>
         </ul>
@@ -51,7 +51,7 @@
         <ul>
             <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
             <li>
-                <%= t.name %>
+                #<%= t.name %>
                 <ul>
                 <% t.items.each.sort_by{ |a| a.name.downcase }.each do |i| %>
                     <li><%= i.name %></li>

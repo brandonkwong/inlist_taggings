@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @item = Item.new
-    
+
     @tags = Tag.all
     @tag = Tag.new
   end
@@ -12,7 +12,9 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
 
-    @tags = tag_params['name'].split(' ')
+    # Scan user input for separate word characters
+    @tags = tag_params['name'].scan(/\w+/)
+
     # logger.debug "\n\n\nDEBUG START \n"
     # logger.debug @tags
     # logger.debug "\nDEBUG END \n\n\n"
