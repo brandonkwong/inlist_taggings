@@ -38,7 +38,7 @@
     <div class="col-md-4">
         <h3>Tags</h3>
         <ul>
-            <% @tags.each do |t| %>
+            <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
             <li><%= t.name %> &nbsp;[ <%= link_to 'x', t, method: :delete %> ]</li>
             <br>
             <% end %>
@@ -49,11 +49,11 @@
     <div class="col-md-4">
         <h3>Taggings</h3>
         <ul>
-            <% @tags.each do |t| %>
+            <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
             <li>
                 <%= t.name %>
                 <ul>
-                <% t.items.each do |i| %>
+                <% t.items.each.sort_by{ |a| a.name.downcase }.each do |i| %>
                     <li><%= i.name %></li>
                 <% end %>
                 </ul>
