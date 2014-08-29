@@ -16,7 +16,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @same = Tag.same_tag(tag_params["name"])
+    @same = Tag.same_tag(tag_params['names'])
 
     # logger.debug "\n\n\nDEBUG START \n"
     # logger.debug @same
