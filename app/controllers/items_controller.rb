@@ -16,21 +16,23 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @same = Tag.same_tag(tag_params['names'])
+
+    # Scope tag method same_tag stores the name from tag_params in @tag,
+    # and performs a query for a tag with that name
+    @tag = Tag.same_tag(tag_params['name'])
 
     # logger.debug "\n\n\nDEBUG START \n"
-    # logger.debug @same
+    # logger.debug @tag.name
     # logger.debug "\nDEBUG END \n\n\n"
 
     # If a Tag already exists then add it to the Item,
     # else create a new Tag and add it to the Item
-
-    # Note: test tag_params is empty
-
-    if @same.exists?
-      @item.tags << @same
+    if @tag.exists?
+      @item.tags << @tag
     else
-      @item.tags.new(tag_params)
+      unless tag_params['name'].empty?
+        @item.tags.new(tag_params)
+      end
     end
 
     if @item.save

@@ -1,7 +1,9 @@
 InlistTaggings::Application.routes.draw do
 
   resources :items
-  resources :tags
+
+  # Note: tags controller/resources only for admin/testing
+  resources :tags, only: :destroy
 
   root 'items#index'
 
