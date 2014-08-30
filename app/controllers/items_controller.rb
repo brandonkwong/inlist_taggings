@@ -40,7 +40,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Item.find(params[:id]).destroy
+    @item = Item.find(params[:id])
+    @item.tags.each do |t|
+      if t.items.count == 1
+        t.destroy
+      end
+    end
+    @item.destroy
     redirect_to root_path
   end
 
