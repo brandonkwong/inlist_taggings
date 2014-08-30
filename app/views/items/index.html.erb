@@ -1,15 +1,24 @@
 <h1>InList</h1>
 
-<!-- Item Form -->
-<%= form_for @item do |f| %>
-    <%= f.text_field :name, placeholder: 'Item' %>
+<div class="row">
 
-    <%= fields_for @tag do |ff| %>
-        <% ff.text_field :name, placeholder: 'Tags' %>
-    <% end %>
+    <!-- Item Form -->
+    <div class="col-md-6">
+        <%= form_for @item do |f| %>
+            <%= f.text_field :name, placeholder: 'Item' %>
+            <%= fields_for @tag do |ff| %>
+                <% ff.text_field :name, placeholder: 'Tags' %>
+            <% end %>
+            <%= f.submit 'Add Item' %>
+        <% end %>
+    </div>
 
-    <%= f.submit 'Add Item' %>
-<% end %>
+    <!-- API Search for Items by Tags -->
+    <div class="col-md-6">
+        <input type="text" size="25" placeholder="Search Items by Tags" data-ng-model="tagQuery" data-ng-change="taggings()">&nbsp; Q
+    </div>
+
+</div> <!-- end row -->
 
 <br><hr>
 
@@ -18,7 +27,7 @@
 <div class="row">
 
     <!-- Item List -->
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h3>Items</h3>
         <ul>
             <% @items.each do |i| %>
@@ -35,10 +44,10 @@
     </div>
 
     <!-- Tag List -->
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h3>Tags</h3>
         <ul>
-            <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
+            <% @tags.sort_by{ |a| a.name.downcase }.each do |t| %>
             <li>#<%= t.name %> &nbsp;[ <%= link_to 'x', t, method: :delete %> ]</li>
             <br>
             <% end %>
@@ -46,20 +55,31 @@
     </div>
 
     <!-- Tagging List -->
-    <div class="col-md-4">
+    <div class="col-md-3">
         <h3>Taggings</h3>
         <ul>
-            <% @tags.each.sort_by{ |a| a.name.downcase }.each do |t| %>
+            <% @tags.sort_by{ |a| a.name.downcase }.each do |t| %>
             <li>
                 #<%= t.name %>
                 <ul>
-                <% t.items.each.sort_by{ |a| a.name.downcase }.each do |i| %>
+                <% t.items.sort_by{ |a| a.name.downcase }.each do |i| %>
                     <li><%= i.name %></li>
                 <% end %>
                 </ul>
             </li>
             <br>
             <% end %>
+        </ul>
+    </div>
+
+    <!-- Tag Query -->
+    <div class="col-md-3">
+        <h3>Tag Query</h3>
+        <ul>
+            <li>
+                #{{data}}
+            </li>
+            <br>
         </ul>
     </div>
 

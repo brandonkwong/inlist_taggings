@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     # Before item destroy,
-    # find tags with only that association
+    # find tags having only that association
     @item.tags.each do |t|
       if t.items.count == 1
         # Destroy Tag
@@ -54,6 +54,14 @@ class ItemsController < ApplicationController
     # Destroy Item
     @item.destroy
     redirect_to root_path
+  end
+
+  def taggings
+    render json: Tag.find_by(name: params[:s]).name
+  end
+
+  def nothing
+    render nothing: true
   end
 
   private

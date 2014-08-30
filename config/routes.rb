@@ -5,6 +5,9 @@ InlistTaggings::Application.routes.draw do
   # Note: tags controller/resources only for admin/testing
   resources :tags, only: :destroy
 
+  get 'api/' => 'items#nothing'
+  get 'api/:s' => 'items#taggings'
+
   root 'items#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
