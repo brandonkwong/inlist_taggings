@@ -10,8 +10,10 @@ class ItemsController < ApplicationController
   end
 
   def create
+    # Create Item
     @item = Item.new(item_params)
     if @item.save
+      # Create Tags
       # Scan user input for individual word characters
       @tags = tag_params['name'].scan(/\w+/)
       @tags.each do |t|
@@ -35,17 +37,21 @@ class ItemsController < ApplicationController
       # logger.debug "\nDEBUG END \n\n\n"
       redirect_to root_path
     else
-      redirect_to root_path # Change to render :index
+      redirect_to root_path   # Change to render :index
     end
   end
 
   def destroy
     @item = Item.find(params[:id])
+    # Before item destroy,
+    # find tags with only that association
     @item.tags.each do |t|
       if t.items.count == 1
+        # Destroy Tag
         t.destroy
       end
     end
+    # Destroy Item
     @item.destroy
     redirect_to root_path
   end

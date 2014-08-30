@@ -2,10 +2,10 @@
 
 <!-- Item Form -->
 <%= form_for @item do |f| %>
-    <%= f.text_field :name, placeholder: 'item' %>
+    <%= f.text_field :name, placeholder: 'Item' %>
 
     <%= fields_for @tag do |ff| %>
-        <% ff.text_field :name, placeholder: 'tags' %>
+        <% ff.text_field :name, placeholder: 'Tags' %>
     <% end %>
 
     <%= f.submit 'Add Item' %>
