@@ -1,44 +1,41 @@
 class ItemsController < ApplicationController
 
   def index
+    # Items
     @items = Item.all
     @item = Item.new
-
+    # Tags
     @tags = Tag.all
     @tag = Tag.new
   end
 
-  # ADD: case insensitive to tags
   def create
     @item = Item.new(item_params)
-
-    # Scan user input for separate word characters
-    @tags = tag_params['name'].scan(/\w+/)
-
-    # logger.debug "\n\n\nDEBUG START \n"
-    # logger.debug @tags
-    # logger.debug "\nDEBUG END \n\n\n"
-
-    @tags.each do |t|
-      # Scope tag method same_tag stores the name from tag_params in @same_tag,
-      # and performs a query for a tag with that name
-      @same_tag = Tag.same_tag(t)
-      # If a Tag already exists then add it to the Item
-      if @same_tag.exists?
-        @item.tags << @same_tag
-      else
-        # Create new tags only if there is user input
-        unless @tags.empty?
-          @tag = Tag.create(name: t)
-          Tagging.create(item: @item, tag: @tag)
+    if @item.save
+      # Scan user input for individual word characters
+      @tags = tag_params['name'].scan(/\w+/)
+      @tags.each do |t|
+        # Scope tag method same_tag stores the name from tag_params in @same_tag,
+        # and performs a query for a tag with that name
+        @same_tag = Tag.same_tag(t)
+        # If a tag already exists then add it to the item
+        if @same_tag.exists?
+          @item.tags << @same_tag
+        else
+          # Create new tags only if there is user input
+          unless @tags.empty?
+            # Note: t.downcase is for all tag creations
+            @tag = Tag.create(name: t.downcase)
+            Tagging.create(item: @item, tag: @tag)
+          end
         end
       end
-    end
-
-    if @item.save
+      # logger.debug "\n\n\nDEBUG START \n"
+      # logger.debug @tags
+      # logger.debug "\nDEBUG END \n\n\n"
       redirect_to root_path
     else
-      redirect_to root_path
+      redirect_to root_path # Change to render :index
     end
   end
 

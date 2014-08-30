@@ -24,10 +24,10 @@
             <% @items.each do |i| %>
             <li>
                 <%= i.name %> &nbsp;[ <%= link_to 'x', i, method: :delete %> ]
+                <% if i.tags.exists? %>
                 <br>
-                [<% i.tags.each do |t| %>
-                    &nbsp;#<%= t.name %>&nbsp;
-                <% end %>]
+                [<% i.tags.each do |t| %>&nbsp;#<%= t.name %>&nbsp;<% end %>]
+                <% end %>
             </li>
             <br>
             <% end %>
