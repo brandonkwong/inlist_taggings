@@ -27,8 +27,8 @@ class ItemsController < ApplicationController
           # Create new tags only if there is user input
           unless @tags.empty?
             # Note: t.downcase is for all tag creations
-            @tag = Tag.create(name: t.downcase)
-            Tagging.create(item: @item, tag: @tag)
+            @tag = Tag.create!(name: t.downcase)
+            Tagging.create!(item: @item, tag: @tag)
           end
         end
       end
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
     # Before item destroy,
     # find tags having only that association
     @item.tags.each do |t|
-      if t.items.count == 1
+      if t.items.count <= 1
         # Destroy Tag
         t.destroy
       end
@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def taggings
-    render json: Tag.find_by(name: params[:s]).name
+    render json: Tag.find_by(name: params[:tag])
   end
 
   def nothing
