@@ -15,7 +15,7 @@
 
     <!-- API Search for Items by Tags -->
     <div class="col-md-6">
-        <input type="text" size="25" placeholder="Search Items by Tags" data-ng-model="tagQuery" data-ng-change="taggings()">&nbsp; Q
+        <input type="text" size="25" placeholder="Search items by tags" data-ng-model="tagQuery" data-ng-change="taggings()">&nbsp; Q
     </div>
 
 </div> <!-- end row -->
@@ -72,12 +72,12 @@
         </ul>
     </div>
 
-    <!-- Tag Query -->
+    <!-- Tag Query Result -->
     <div class="col-md-3">
         <h3>Tag Query</h3>
         <ul>
             <li>
-                #{{data.name}}
+                #{{tag.name}}
             </li>
             <br>
         </ul>
