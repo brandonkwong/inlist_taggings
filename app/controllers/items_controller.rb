@@ -57,16 +57,14 @@ class ItemsController < ApplicationController
   end
 
   def taggings
+    # Render JSON based on tag query
     render json: Tag.find_by(name: params[:t])
   end
 
   def nothing
+    # Render nothing if tagQuery is empty
     render nothing: true
   end
-
-  def default_serializer_options  
-    {root: false}  
-  end  
 
   private
 
