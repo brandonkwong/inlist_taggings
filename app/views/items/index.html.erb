@@ -78,10 +78,10 @@
         <ul>
             <li>
                 #{{tag.name}}
+                <ul>
+                    <li data-ng-repeat="item in tag.items">{{item.name}}</li>
+                </ul>
             </li>
-            <ul>
-                <li data-ng-repeat="item in tag">{{item.name}}</li>
-            </ul>
             <br>
         </ul>
     </div>

@@ -6,7 +6,7 @@ gem 'rails', '4.0.4'
 # Twitter Bootstrap
 gem 'bootstrap-sass', '~>3.2.0'
 
-# Active Model Serializer
+# Active Model Serializers
 gem 'active_model_serializers', '0.8.0'
 
 # Use postgresql as the database for Active Record

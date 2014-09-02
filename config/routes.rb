@@ -6,7 +6,7 @@ InlistTaggings::Application.routes.draw do
   resources :tags, only: :destroy
 
   get 'api/' => 'items#nothing'
-  get 'api/:tag' => 'items#taggings'
+  get 'api/:t' => 'items#taggings'
 
   root 'items#index'
 
