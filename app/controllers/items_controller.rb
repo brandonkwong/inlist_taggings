@@ -64,6 +64,10 @@ class ItemsController < ApplicationController
     render nothing: true
   end
 
+  def default_serializer_options  
+    {root: false}  
+  end  
+
   private
 
   def item_params
