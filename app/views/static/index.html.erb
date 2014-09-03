@@ -1,9 +1,3 @@
-<h1>Static#index</h1>
-<p>Find me in app/views/static/index.html.erb</p>
-
-
-
-
 <h1>InList</h1>
 
 <div class="row">
@@ -82,10 +76,10 @@
     <div class="col-md-3">
         <h3>Tag Query</h3>
         <ul data-ng-if="tagQuery.name != ''">
-            <li data-ng-repeat="t in tags | filter:tagQuery | orderBy:'name'">
-                #{{t.name}}
+            <li data-ng-repeat="tag in tags | filter:tagQuery | orderBy:'tag.name'">
+                #{{tag.name}}
                 <ul>
-                    <li data-ng-repeat="i in t.items">{{i.name}}</li>
+                    <li data-ng-repeat="item in tag.items">{{item.name}}</li>
                 </ul>
                 <br>
             </li>
