@@ -4,15 +4,20 @@ class TagsController < ApplicationController
 
   respond_to :json
 
-  def destroy
-    Tag.find(params[:id]).destroy
-    redirect_to root_path
+  def index
+    @tags = Tag.all
+    respond_with @tags, each_serializer: TagSerializer
   end
 
-  private
+  # def destroy
+  #   Tag.find(params[:id]).destroy
+  #   redirect_to root_path
+  # end
 
-  def tag_params
-    params.require(:tag).permit(:name)
-  end
+  # private
+
+  # def tag_params
+  #   params.require(:tag).permit(:name)
+  # end
 
 end

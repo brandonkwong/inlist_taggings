@@ -1,19 +1,19 @@
 InlistTaggings::Application.routes.draw do
 
-  # scope '/api' do
-  #   resources :items, defaults: { format: :json }
-  #   resources :tags, only: :destroy, defaults: { format: :json }
-  # end
+  scope '/api' do
+    resources :items, defaults: { format: :json }
+    resources :tags, defaults: { format: :json }
+  end
 
-  resources :items
+  # resources :items
 
-  # Note: tags controller/resources only for admin/testing
-  resources :tags, only: :destroy
+  # # Note: tags controller/resources only for admin/testing
+  # resources :tags, only: :destroy
 
-  get 'api/' => 'items#nothing'
-  get 'api/:t' => 'items#taggings'
+  # get 'api/' => 'items#nothing'
+  # get 'api/:t' => 'items#taggings'
 
-  root 'items#index'
+  root 'static#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

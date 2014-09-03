@@ -1,20 +1,13 @@
-class ItemsController < ApplicationController
-
-  respond_to :json
-
+class StaticController < ApplicationController
+  
   def index
+    # Items
     @items = Item.all
-    respond_with @items, each_serializer: ItemSerializer
+    @item = Item.new
+    # Tags
+    @tags = Tag.all
+    @tag = Tag.new
   end
-
-  # def index
-  #   # Items
-  #   @items = Item.all
-  #   @item = Item.new
-  #   # Tags
-  #   @tags = Tag.all
-  #   @tag = Tag.new
-  # end
 
   # def create
   #   # Create Item
@@ -82,5 +75,5 @@ class ItemsController < ApplicationController
   # def tag_params
   #   params.require(:tag).permit(:name)
   # end
-
+  
 end
