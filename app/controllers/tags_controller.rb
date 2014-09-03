@@ -2,6 +2,8 @@ class TagsController < ApplicationController
 
   # Note: tags controller for testing
 
+  respond_to :json
+
   def destroy
     Tag.find(params[:id]).destroy
     redirect_to root_path

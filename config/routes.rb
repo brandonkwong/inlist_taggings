@@ -1,5 +1,10 @@
 InlistTaggings::Application.routes.draw do
 
+  # scope '/api' do
+  #   resources :items, defaults: { format: :json }
+  #   resources :tags, only: :destroy, defaults: { format: :json }
+  # end
+
   resources :items
 
   # Note: tags controller/resources only for admin/testing

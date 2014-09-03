@@ -10,3 +10,18 @@ inlistApp.controller('InListCtrl', ['$scope', '$http', function($scope, $http) {
   };
 
 }]);
+
+
+// inlistApp.controller('InListCtrl', ['$scope', 'Tag', function($scope, Tag) {
+
+
+//   // Tag.get
+//   // Tag.update
+
+//   $scope.tags = {};
+
+//   Tag.query(function(json) {
+//     $scope.tags = json;
+//   });
+
+// }]);
