@@ -1,4 +1,4 @@
-var inlistApp = angular.module('InListApp', ['ngResource']).config(
+var inlistApp = angular.module('InListApp', ['ngResource', 'infinite-scroll']).config(
     ['$httpProvider', function($httpProvider) {
     var authToken = angular.element("meta[name=\"csrf-token\"]").attr("content");
     var defaults = $httpProvider.defaults.headers;
