@@ -75,11 +75,11 @@
     <!-- Tag Query Result -->
     <div class="col-md-3">
         <h3>Tag Query</h3>
-        <ul data-ng-if="tag.name">
-            <li>
-                #{{tag.name}}
+        <ul data-ng-if="tagQuery">
+            <li data-ng-repeat="t in tag | filter:tagQuery | orderBy:'name'">
+                #{{t.name}}
                 <ul>
-                    <li data-ng-repeat="item in tag.items">{{item.name}}</li>
+                    <li data-ng-repeat="i in t.items | orderBy:'name'">{{i.name}}</li>
                 </ul>
             </li>
             <br>

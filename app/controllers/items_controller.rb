@@ -58,7 +58,7 @@ class ItemsController < ApplicationController
 
   def taggings
     # Render JSON based on tag query
-    render json: Tag.find_by(name: params[:t])
+    render json: Tag.all # Tag.find_by(name: params[:t])
   end
 
   def nothing
