@@ -9,3 +9,10 @@ InList is a visual space for people to collect and share items they want and own
 * Create, organize, and share your collection of items you want.
 * Send friends personal reviews, item suggestions, and buying tips.
 * Discover similarly tagged items from other peoples’ collections.
+
+View [InList](http://github.com/brandonkwong/inlist) on GitHub.
+
+### Instructions
+```
+$ bundle
+```
